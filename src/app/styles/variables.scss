@@ -1,0 +1,21 @@
+// Design System Variables
+$border-default: 8px;
+// Fonts
+$font-primary: 'Poppins', sans-serif;
+// Colors
+$font-color-primary: #FFFFFF;
+$color-button-primary: #FF8310;
+$color-button-secondary: #494949;
+$color-background-primary: #232323;
+$font-color-secondary: #CCCCCC;
+$background-card-primary: #191A20;
+$background-card-secondary: #2B2B2B;
+$background-image-nft: #22232C;
+
+// Breakpoints
+$breakpoints: (
+    'sm': 540px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1280px
+)
