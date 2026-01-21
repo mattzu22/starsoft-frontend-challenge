@@ -1,159 +1,50 @@
-import Image from 'next/image';
-import logo from '../../public/logo.png';
-import cart from '../../public/Bag.png';
-import nft_1 from '../../public/nft_1.png';
-import icon_price from '../../public/icon_price.png';
+'use client';
+
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import CardNFT from './components/nft/CardNFT';
+import Button from '@/components/common/Button';
 
 import styles from './page.module.scss';
+import { useState } from 'react';
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  function handleLoadMore() {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }
+
   return (
     <>
-      <div className={styles.header}>
-        <header>
-          <Image src={logo} alt="Logo" />
-          <div className={styles.cart}>
-            <Image className={styles.cartIcon} src={cart} alt="Cart" />
-            <span>0</span>
-          </div>
-        </header>
-      </div>
+      <Header />
 
       <section className={styles.containerNFT}>
-        <div className={styles.cardNFT}>
-          <div className={styles.containerImageNFT}>
-            <Image className="" src={nft_1} alt="Logo" />
-          </div>
-
-          <div className={styles.containerContent}>
-            <h2>Lorem inpsum</h2>
-            <p>Redesigned from scratch and completely revised.</p>
-            <div className={styles.content}>
-              <Image src={icon_price} alt="Cart" />
-              <span>32 ETH</span>
-            </div>
-            <button>Comprar</button>
-          </div>
-        </div>
-
-        <div className={styles.cardNFT}>
-          <div className={styles.containerImageNFT}>
-            <Image className="" src={nft_1} alt="Logo" />
-          </div>
-
-          <div className={styles.containerContent}>
-            <h2>Lorem inpsum</h2>
-            <p>Redesigned from scratch and completely revised.</p>
-            <div className={styles.content}>
-              <Image src={icon_price} alt="Cart" />
-              <span>32 ETH</span>
-            </div>
-            <button>Comprar</button>
-          </div>
-        </div>
-
-        <div className={styles.cardNFT}>
-          <div className={styles.containerImageNFT}>
-            <Image className="" src={nft_1} alt="Logo" />
-          </div>
-
-          <div className={styles.containerContent}>
-            <h2>Lorem inpsum</h2>
-            <p>Redesigned from scratch and completely revised.</p>
-            <div className={styles.content}>
-              <Image src={icon_price} alt="Cart" />
-              <span>32 ETH</span>
-            </div>
-            <button>Comprar</button>
-          </div>
-        </div>
-
-        <div className={styles.cardNFT}>
-          <div className={styles.containerImageNFT}>
-            <Image className="" src={nft_1} alt="Logo" />
-          </div>
-
-          <div className={styles.containerContent}>
-            <h2>Lorem inpsum</h2>
-            <p>Redesigned from scratch and completely revised.</p>
-            <div className={styles.content}>
-              <Image src={icon_price} alt="Cart" />
-              <span>32 ETH</span>
-            </div>
-            <button>Comprar</button>
-          </div>
-        </div>
-
-        <div className={styles.cardNFT}>
-          <div className={styles.containerImageNFT}>
-            <Image className="" src={nft_1} alt="Logo" />
-          </div>
-
-          <div className={styles.containerContent}>
-            <h2>Lorem inpsum</h2>
-            <p>Redesigned from scratch and completely revised.</p>
-            <div className={styles.content}>
-              <Image src={icon_price} alt="Cart" />
-              <span>32 ETH</span>
-            </div>
-            <button>Comprar</button>
-          </div>
-        </div>
-
-        <div className={styles.cardNFT}>
-          <div className={styles.containerImageNFT}>
-            <Image className="" src={nft_1} alt="Logo" />
-          </div>
-
-          <div className={styles.containerContent}>
-            <h2>Lorem inpsum</h2>
-            <p>Redesigned from scratch and completely revised.</p>
-            <div className={styles.content}>
-              <Image src={icon_price} alt="Cart" />
-              <span>32 ETH</span>
-            </div>
-            <button>Comprar</button>
-          </div>
-        </div>
-
-        <div className={styles.cardNFT}>
-          <div className={styles.containerImageNFT}>
-            <Image className="" src={nft_1} alt="Logo" />
-          </div>
-
-          <div className={styles.containerContent}>
-            <h2>Lorem inpsum</h2>
-            <p>Redesigned from scratch and completely revised.</p>
-            <div className={styles.content}>
-              <Image src={icon_price} alt="Cart" />
-              <span>32 ETH</span>
-            </div>
-            <button>Comprar</button>
-          </div>
-        </div>
-
-        <div className={styles.cardNFT}>
-          <div className={styles.containerImageNFT}>
-            <Image className="" src={nft_1} alt="Logo" />
-          </div>
-
-          <div className={styles.containerContent}>
-            <h2>Lorem inpsum</h2>
-            <p>Redesigned from scratch and completely revised.</p>
-            <div className={styles.content}>
-              <Image src={icon_price} alt="Cart" />
-              <span>32 ETH</span>
-            </div>
-            <button>Comprar</button>
-          </div>
-        </div>
+        <CardNFT />
+        <CardNFT />
+        <CardNFT />
+        <CardNFT />
+        <CardNFT />
+        <CardNFT />
+        <CardNFT />
+        <CardNFT />
       </section>
 
-      <button className={styles.loadMore}>Carregar mais</button>
+      <div className={styles.containerLoadMore}>
+        <Button
+          animation="fade"
+          isLoading={isLoading}
+          onClick={handleLoadMore}
+          className={styles.loadMore}
+        >
+          <span>Carregar mais</span>
+        </Button>
+      </div>
 
-      <footer className={styles.footer}>
-        <h2>STARSOFT © TODOS OS DIREITOS RESERVADOS</h2>
-      </footer>
+      <Footer />
     </>
   );
 }
