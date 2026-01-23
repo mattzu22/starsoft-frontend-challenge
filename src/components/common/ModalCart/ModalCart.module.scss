@@ -1,0 +1,149 @@
+@use '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
+
+.containerModal {
+  @include mixins.flex-column;
+  @include mixins.main-wrapper(670px);
+  background-color: variables.$color-background-primary;
+ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.header {
+  @include mixins.align-items();
+  padding: 50px 0 0 55px;
+  gap: 84px;
+  margin-bottom: 130px;
+
+  button {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: variables.$color-button-secondary;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
+.containerCardNFT {
+  // @include mixins.main-wrapper();
+  @include mixins.flex-column();
+  padding: 0 15px;
+  gap: 27px;
+
+  .cardNFT {
+    display: flex;
+    gap: 31px;
+    width: 100%;
+    padding: 20px 30px;
+    border-radius: variables.$border-default;
+    background-color: variables.$background-card-secondary;
+
+    .imageNFT {
+      @include mixins.center();
+      border-radius: variables.$border-default;
+      width: 161px;
+      height: 161px;
+      background-color: variables.$background-image-nft;
+    }
+
+    .content {
+      width: 70%;
+
+      h2 {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 12px;
+        font-weight: 300;
+        color: variables.$font-color-secondary;
+      }
+
+      .price {
+        @include mixins.align-items();
+        gap: 10px;
+        margin-top: 12px;
+
+        span {
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
+
+      .containerQuantity {
+        @include mixins.space-between();
+        @include mixins.align-items();
+        gap: 10px;
+        margin-top: 12px;
+
+        .quantity {
+          @include mixins.align-items();
+          margin-top: 16px;
+
+          .subtract {
+            width: 38px;
+            height: 43px;
+            border-radius: 9px 0 0 8px;
+            background-color: variables.$color-background-primary;
+          }
+
+          span {
+            @include mixins.center();
+            width: 38px;
+            height: 43px;
+            background-color: variables.$color-background-primary;
+          }
+
+          .add {
+            width: 38px;
+            height: 43px;
+            border-radius: 0 9px 9px 0;
+            background-color: variables.$color-background-primary;
+          }
+        }
+
+        .buttonDelete {
+          width: 43px;
+          height: 43px;
+          border-radius: 50%;
+          // position: absolute;
+          // right: -70px;
+          // margin-right: -60px;
+          background-color: variables.$color-button-primary;
+        }
+      }
+    }
+  }
+}
+
+.total {
+  @include mixins.space-between();
+  padding: 70px 35px;
+
+  span {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .totalPrice {
+    @include mixins.align-items();
+    gap: 5px;  
+
+    span {
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+}
+
+.buttonBuy {
+  margin: 0 auto;
+  margin-bottom: 140px;
+  padding: 30px 0;
+  max-width: 610px;
+  background-color: variables.$color-button-primary;
+}
