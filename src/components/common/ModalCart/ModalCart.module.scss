@@ -4,8 +4,8 @@
 .containerModal {
   @include mixins.flex-column;
   @include mixins.main-wrapper(670px);
+  @include mixins.panel-shadow;
   background-color: variables.$color-background-primary;
- box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .header {
@@ -15,20 +15,15 @@
   margin-bottom: 130px;
 
   button {
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    background-color: variables.$color-button-secondary;
+    @include mixins.circle-button(60px, variables.$color-button-secondary);
   }
 
   h2 {
-    font-size: 24px;
-    font-weight: 500;
+    @include mixins.font-style(24px, 500);
   }
 }
 
 .containerCardNFT {
-  // @include mixins.main-wrapper();
   @include mixins.flex-column();
   padding: 0 15px;
   gap: 27px;
@@ -43,9 +38,8 @@
 
     .imageNFT {
       @include mixins.center();
+      @include mixins.size(161px);
       border-radius: variables.$border-default;
-      width: 161px;
-      height: 161px;
       background-color: variables.$background-image-nft;
     }
 
@@ -53,14 +47,11 @@
       width: 70%;
 
       h2 {
-        font-size: 18px;
-        font-weight: 500;
+        @include mixins.font-style(18px, 500);
       }
 
       p {
-        font-size: 12px;
-        font-weight: 300;
-        color: variables.$font-color-secondary;
+        @include mixins.font-style(12px, 300, variables.$font-color-secondary);
       }
 
       .price {
@@ -69,8 +60,7 @@
         margin-top: 12px;
 
         span {
-          font-size: 20px;
-          font-weight: 600;
+          @include mixins.font-style(20px, 600);
         }
       }
 
@@ -85,35 +75,26 @@
           margin-top: 16px;
 
           .subtract {
-            width: 38px;
-            height: 43px;
+            @include mixins.size(38px, 43px);
             border-radius: 9px 0 0 8px;
             background-color: variables.$color-background-primary;
           }
 
           span {
             @include mixins.center();
-            width: 38px;
-            height: 43px;
+            @include mixins.size(38px, 43px);
             background-color: variables.$color-background-primary;
           }
 
           .add {
-            width: 38px;
-            height: 43px;
+            @include mixins.size(38px, 43px);
             border-radius: 0 9px 9px 0;
             background-color: variables.$color-background-primary;
           }
         }
 
         .buttonDelete {
-          width: 43px;
-          height: 43px;
-          border-radius: 50%;
-          // position: absolute;
-          // right: -70px;
-          // margin-right: -60px;
-          background-color: variables.$color-button-primary;
+          @include mixins.circle-button(43px, variables.$color-button-primary);
         }
       }
     }
@@ -125,8 +106,7 @@
   padding: 70px 35px;
 
   span {
-    font-size: 24px;
-    font-weight: 700;
+    @include mixins.font-style(24px, 700);
   }
 
   .totalPrice {
@@ -134,8 +114,7 @@
     gap: 5px;  
 
     span {
-      font-size: 24px;
-      font-weight: 600;
+      @include mixins.font-style(24px, 600);
     }
   }
 }

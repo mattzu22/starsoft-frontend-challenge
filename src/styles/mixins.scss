@@ -88,3 +88,32 @@
     @content;
   }
 }
+
+@mixin font-style($size, $weight, $color: null) {
+  font-size: $size;
+  font-weight: $weight;
+  @if $color {
+    color: $color;
+  }
+}
+
+@mixin circle-button($size, $bg-color) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background-color: $bg-color;
+  @include center; 
+}
+
+@mixin panel-shadow {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+              rgba(0, 0, 0, 0.12) 0px -12px 30px,
+              rgba(0, 0, 0, 0.12) 0px 4px 6px,
+              rgba(0, 0, 0, 0.17) 0px 12px 13px,
+              rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
