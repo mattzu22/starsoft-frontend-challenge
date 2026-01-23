@@ -8,22 +8,6 @@
   border-radius: variables.$border-default;
   background-color: variables.$background-card-primary;
 
-  // .containerImageNFT {
-  //   @include mixins.center;
-  //   width: 100%;
-  //   height: 258px;
-  //   border-radius: variables.$border-default;
-  //   background-color: variables.$background-image-nft;
-
-  //   img {
-  //     width: 216px;
-  //     height: 195px;
-  //     max-width: 100%;
-  //     object-fit: cover;
-  //     border-radius: variables.$border-default;
-  //   }
-  // }
-
   .imageNFT {
     @include mixins.center;
     width: 100%;
