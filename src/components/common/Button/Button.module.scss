@@ -1,0 +1,76 @@
+@use '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
+
+.buttonContainer {
+  position: relative;
+  width: 100%;
+}
+
+.button {
+  @include mixins.button-base;
+  width: 100%;
+}
+
+/* Animations */
+.animationFade {
+  @include mixins.animation-fade;
+}
+
+.animationDrop {
+  @include mixins.animation-drop;
+  position: relative;
+
+  .textInitial {
+    transition: opacity 0.3s ease-out 0.3s;
+  }
+
+  .textHover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+  }
+
+  &:hover {
+    .textInitial {
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+    }
+    .textHover {
+      opacity: 1;
+      transition: opacity 0.3s ease-out 0.3s;
+    }
+  }
+}
+
+
+/* Loading State */
+.loadingBarContainer {
+  width: 100%;
+  background-color: variables.$color-button-secondary;
+  height: 7px;
+  position: absolute;
+  top: -14px;
+
+  .loadingBar {
+    height: 100%;
+    border-radius: variables.$border-default;
+    background-color: variables.$color-button-primary;
+    animation: loading 2s ease-in-out forwards;
+  }
+
+  @keyframes loading {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+}
