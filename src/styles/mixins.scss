@@ -1,0 +1,90 @@
+@use '@/styles/variables.scss' as var;
+@use 'sass:map';
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin align-items{
+  display: flex;
+  align-items: center;
+}
+
+@mixin space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin main-wrapper($max-width: 1440px) {
+  max-width: $max-width;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@mixin button-base(
+  $padding: 22px 0,
+  $font-size: 16px,
+  $font-weight: 600,
+  $max-width: 100%
+) {
+  @include center;
+  position: relative;
+  width: 100%;
+  max-width: $max-width;
+  padding: $padding;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  background-color: var.$color-button-secondary;
+  border-radius: var.$border-default;
+  color: var.$font-color-primary;
+  overflow: hidden;
+  z-index: 1;
+}
+
+@mixin animation-drop() {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 225%;
+    padding-top: 225%;
+    background-color: var.$color-button-primary;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s cubic-bezier(0.7, 0, 0.2, 1);
+    z-index: -1;
+  }
+
+  &:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@mixin animation-fade() {
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var.$color-button-primary;
+  }
+}
+
+@mixin responsive($breakpoint) {
+  @media (max-width: #{map.get(var.$breakpoints, $breakpoint)}) {
+    @content;
+  }
+}
