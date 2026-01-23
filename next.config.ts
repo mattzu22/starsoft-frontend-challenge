@@ -1,8 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'softstar.s3.amazonaws.com',
+        pathname: '/**',
+      },
+    ]
+  },
   webpack: (config) => {
     config.watchOptions = {
       poll: 1000,
