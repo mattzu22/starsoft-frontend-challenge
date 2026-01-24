@@ -1,14 +1,14 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import Button from '@/components/common/Button';
-import ListCardsNFT from '../components/nft/ListCardsNFT';
+import LoadMore from '@/components/ui/LoadMore';
+import ListCardsNFT from '../components/home-nft/ListCardsNFT';
 
 import styles from '@/styles/Home.module.scss';
 import Head from 'next/head';
 import useNFTs, { NFTprops } from '../hooks/useNFTs';
 import { GetStaticProps } from 'next';
 import api from '../services/api';
-import ModalCart from '@/components/common/ModalCart';
+import ModalCart from '@/components/cart/ModalCart';
 import { useState } from 'react';
 
 export interface initialDataProps {
@@ -64,7 +64,7 @@ export default function Home({ initialData }: { initialData: initialDataProps })
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header setIsOpen={openModal} isOpen={isOpen} />
+      <Header setIsOpen={openModal} />
 
       {isOpen && <ModalCart />}
 
@@ -72,7 +72,7 @@ export default function Home({ initialData }: { initialData: initialDataProps })
       {data && <ListCardsNFT data={products} />}
 
       <div className={styles.containerLoadMore}>
-        <Button
+        <LoadMore
           animation="fade"
           isLoading={isFetchingNextPage}
           onClick={handleLoadMore}
@@ -84,7 +84,7 @@ export default function Home({ initialData }: { initialData: initialDataProps })
               hasNextPage ? 'Carregar mais' : 'Você já viu tudo'
             }
           </span>
-        </Button>
+        </LoadMore>
       </div>
 
       <Footer />
