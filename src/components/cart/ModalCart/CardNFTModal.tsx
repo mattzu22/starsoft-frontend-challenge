@@ -5,9 +5,9 @@ import iconDelete from "@/public/Delete.png"
 import { CartItem } from "@/src/types/storeCart"
 import { useDispatch } from "react-redux"
 import { addItem, decreaseItem, deleteItem } from "@/src/store/cart/cartSlice"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { cardModalVariants } from "@/src/animations/variants"
-
+import { quantityVariants } from "@/src/animations/variants"
 
 export default function CardNFTModal({ item }: { item: CartItem }) {
   const dispatch = useDispatch();
@@ -46,9 +46,31 @@ export default function CardNFTModal({ item }: { item: CartItem }) {
         </div>
         <div className={styles.containerQuantity}>
           <div className={styles.quantity}>
-            <button className={styles.subtract} onClick={handleDecreaseQuantity}>-</button>
-            <span>{item.quantity}</span>
-            <button className={styles.add} onClick={handleIncreaseQuantity}>+</button>
+            <motion.button
+              className={styles.subtract}
+              onClick={handleDecreaseQuantity}
+              whileTap={{ scale: 0.8 }}
+            >
+              -
+            </motion.button>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={item.quantity}
+                variants={quantityVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                {item.quantity}
+              </motion.span>
+            </AnimatePresence>
+            <motion.button
+              className={styles.add}
+              onClick={handleIncreaseQuantity}
+              whileTap={{ scale: 0.8 }}
+            >
+              +
+            </motion.button>
           </div>
 
           <button className={styles.buttonDelete} onClick={handleDeleteItem}>
