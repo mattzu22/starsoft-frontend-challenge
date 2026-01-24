@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import '@/styles/globals.scss';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import StoreProvider from '../store/StoreProvider';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -20,7 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
-            <Component {...pageProps} />
+            <StoreProvider>
+                <Component {...pageProps} />
+            </StoreProvider>
         </QueryClientProvider>
     );
 }
