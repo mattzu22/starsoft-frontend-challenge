@@ -12,7 +12,7 @@ interface ButtonProps {
   textHover?: string;
 }
 
-export default function Button({
+export default function LoadMore({
   children,
   onClick,
   animation,
