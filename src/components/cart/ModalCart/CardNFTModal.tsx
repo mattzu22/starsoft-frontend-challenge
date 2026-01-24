@@ -5,7 +5,7 @@ import iconDelete from "@/public/Delete.png"
 import { CartItem } from "@/src/types/storeCart"
 import { useDispatch } from "react-redux"
 import { addItem, decreaseItem, deleteItem } from "@/src/store/cart/cartSlice"
-import { motion } from "framer-motion" // Import motion
+import { motion } from "framer-motion"
 import { cardModalVariants } from "@/src/animations/variants"
 
 
