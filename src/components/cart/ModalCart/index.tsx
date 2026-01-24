@@ -9,7 +9,7 @@ import { selectCartItems, selectTotalPrice, selectIsCartOpen } from '@/src/store
 import CardNFTModal from './CardNFTModal';
 import { CartItem } from '@/src/types/storeCart';
 import { clearCart, closeCart } from '@/src/store/cart/cartSlice';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { modalVariants } from '@/src/animations/variants';
 
 import cart from "@/public/Bag.png"
@@ -63,12 +63,14 @@ export default function ModalCart() {
       <div className={styles.containerCardNFT}>
         {cartItems.length === 0 && buttonText === 'FINALIZAR COMPRA' &&
           <div className={styles.cartVoid}>
-            <h2>Carrinho vazio</h2>          
+            <h2>Carrinho vazio</h2>
             <Image src={cart} alt="Cart" width={35} height={35} />
           </div>}
-        {cartItems.map((item: CartItem) => (
-          <CardNFTModal key={item.id} item={item} />
-        ))}
+        <AnimatePresence mode="popLayout">
+          {cartItems.map((item: CartItem) => (
+            <CardNFTModal key={item.id} item={item} />
+          ))}
+        </AnimatePresence>
       </div>
 
       <div className={styles.total}>

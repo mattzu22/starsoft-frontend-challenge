@@ -5,6 +5,9 @@ import iconDelete from "@/public/Delete.png"
 import { CartItem } from "@/src/types/storeCart"
 import { useDispatch } from "react-redux"
 import { addItem, decreaseItem, deleteItem } from "@/src/store/cart/cartSlice"
+import { motion } from "framer-motion" // Import motion
+import { cardModalVariants } from "@/src/animations/variants"
+
 
 export default function CardNFTModal({ item }: { item: CartItem }) {
   const dispatch = useDispatch();
@@ -22,9 +25,17 @@ export default function CardNFTModal({ item }: { item: CartItem }) {
   };
 
   return (
-    <div className={styles.cardNFT} key={item.id}>
+    <motion.div
+      variants={cardModalVariants}
+      initial="initial"
+      animate="visible"
+      exit="exit"
+      layout
+      className={styles.cardNFT}
+      key={item.id}
+    >
       <div className={styles.imageNFT}>
-        <Image src={item.image} alt="imagem do produto nft" width={139} height={139} />
+        <Image src={item.image} alt={`NFT ${item.name}`} width={139} height={139} />
       </div>
       <div className={styles.content}>
         <h2>{item.name}</h2>
@@ -45,6 +56,6 @@ export default function CardNFTModal({ item }: { item: CartItem }) {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
