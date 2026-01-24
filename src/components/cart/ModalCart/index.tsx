@@ -1,9 +1,7 @@
 import Image from 'next/image';
-import iconDelete from '@/public/Delete.png';
-import spiritLanter from '@/public/spirit-lantern 1.png';
 
 import styles from './ModalCart.module.scss';
-import Button from '../Button';
+import LoadMore from '@/components/ui/LoadMore';
 
 import { HeaderModal } from './Header';
 import { useSelector } from 'react-redux';
@@ -33,13 +31,13 @@ export default function ModalCart() {
         </div>
       </div>
 
-      <Button
+      <LoadMore
         animation="fade"
         textHover="COMPRA FINALIZADA!"
         className={styles.buttonBuy}
       >
         FINALIZAR COMPRA
-      </Button>
+      </LoadMore>
     </div>
   );
 }
