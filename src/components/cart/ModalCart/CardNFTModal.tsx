@@ -24,7 +24,7 @@ export default function CardNFTModal({ item }: { item: CartItem }) {
   return (
     <div className={styles.cardNFT} key={item.id}>
       <div className={styles.imageNFT}>
-        <Image src={item.image} alt="spiritLanter" width={139} height={139} />
+        <Image src={item.image} alt="imagem do produto nft" width={139} height={139} />
       </div>
       <div className={styles.content}>
         <h2>{item.name}</h2>
