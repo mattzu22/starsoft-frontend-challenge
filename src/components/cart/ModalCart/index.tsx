@@ -1,17 +1,53 @@
 import Image from 'next/image';
-
+import { useState, useEffect } from 'react';
 import styles from './ModalCart.module.scss';
 import Button from '@/components/ui/Button';
-
+import Spinner from '@/components/ui/Spinner';
 import { HeaderModal } from './Header';
-import { useSelector } from 'react-redux';
-import { selectCartItems, selectTotalPrice } from '@/src/store/cart/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCartItems, selectTotalPrice, selectIsCartOpen } from '@/src/store/cart/selectors';
 import CardNFTModal from './CardNFTModal';
 import { CartItem } from '@/src/types/storeCart';
+import { clearCart, closeCart } from '@/src/store/cart/cartSlice';
+
+import cart from "@/public/Bag.png"
 
 export default function ModalCart() {
+  const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectTotalPrice);
+  const isCartOpen = useSelector(selectIsCartOpen);
+
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [buttonText, setButtonText] = useState('FINALIZAR COMPRA');
+
+  const handleCheckout = () => {
+    if (isCheckingOut || cartItems.length === 0) return;
+
+    setIsCheckingOut(true);
+    setButtonText('PROCESSANDO...');
+
+    setTimeout(() => {
+      setIsCheckingOut(false);
+      setButtonText('COMPRA FINALIZADA!');
+
+      setTimeout(() => {
+        dispatch(closeCart());
+        dispatch(clearCart());
+      }, 2000);
+
+    }, 1000);
+  };
+
+  useEffect(() => {
+    if (isCartOpen) {
+      const timer = setTimeout(() => {
+        setIsCheckingOut(false);
+        setButtonText('FINALIZAR COMPRA');
+      }, 0); 
+      return () => clearTimeout(timer);
+    }
+  }, [isCartOpen]);
 
 
   return (
@@ -19,7 +55,14 @@ export default function ModalCart() {
       <HeaderModal />
 
       <div className={styles.containerCardNFT}>
-         {cartItems.length === 0 && <h2>Carrinho vazio</h2>}
+        {
+          cartItems.length === 0 && buttonText === 'FINALIZAR COMPRA' &&
+          <div className={styles.cartVoid}>
+            <h2>Carrinho vazio</h2>
+            <Image src={cart} alt="Cart" width={39} height={39} />
+          </div>
+        }
+
         {cartItems.map((item: CartItem) => (
           <CardNFTModal key={item.id} item={item} />
         ))}
@@ -36,10 +79,11 @@ export default function ModalCart() {
 
       <Button
         animation="fade"
-        textHover="COMPRA FINALIZADA!"
+        onClick={handleCheckout}
+        disabled={isCheckingOut || cartItems.length === 0 || buttonText === 'COMPRA FINALIZADA!'}
         className={styles.buttonBuy}
       >
-        FINALIZAR COMPRA
+        {isCheckingOut ? <Spinner /> : buttonText}
       </Button>
     </div>
   );

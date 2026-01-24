@@ -31,6 +31,30 @@
   @include mixins.flex-column();
   padding: 0 15px;
   gap: 27px;
+  max-height: 429px;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: variables.$color-button-primary transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: variables.$color-button-primary; 
+    border-radius: 4px; 
+    border: 2px solid variables.$color-background-primary;
+  }
+
+  .cartVoid {
+    @include mixins.center();
+    gap: 20px;
+  }
 
   .cardNFT {
     display: flex;
