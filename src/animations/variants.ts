@@ -31,6 +31,6 @@ export const cardModalVariants: Variants = {
     opacity: 0,
     scale: 0, 
     transformOrigin: "center center",
-    transition: { duration: 0.3, ease: "easeOut" }
+    transition: { duration: 0.4, ease: "easeOut" }
   }
 };

@@ -9,7 +9,7 @@ import { selectCartItems, selectTotalPrice, selectIsCartOpen } from '@/src/store
 import CardNFTModal from './CardNFTModal';
 import { CartItem } from '@/src/types/storeCart';
 import { clearCart, closeCart } from '@/src/store/cart/cartSlice';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
 import { modalVariants } from '@/src/animations/variants';
 
 import cart from "@/public/Bag.png"
@@ -58,38 +58,51 @@ export default function ModalCart() {
       animate="animate"
       exit="exit"
     >
-      <HeaderModal />
+      <LayoutGroup>
+        <HeaderModal />
 
-      <div className={styles.containerCardNFT}>
-        {cartItems.length === 0 && buttonText === 'FINALIZAR COMPRA' &&
-          <div className={styles.cartVoid}>
-            <h2>Carrinho vazio</h2>
-            <Image src={cart} alt="Cart" width={35} height={35} />
-          </div>}
-        <AnimatePresence mode="popLayout">
-          {cartItems.map((item: CartItem) => (
-            <CardNFTModal key={item.id} item={item} />
-          ))}
-        </AnimatePresence>
-      </div>
+        <motion.div className={styles.containerCardNFT} layout>
+          <AnimatePresence mode="popLayout">
+            {cartItems.length === 0 && buttonText === 'FINALIZAR COMPRA' && (
 
-      <div className={styles.total}>
-        <span>TOTAL</span>
+              <motion.div
+                key="empty-cart"
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                className={styles.cartVoid}
+              >
+                <h2>Carrinho vazio</h2>
+                <Image src={cart} alt="Cart" width={35} height={35} />
+              </motion.div>
+            )}
+            {cartItems.map((item: CartItem) => (
+              <CardNFTModal key={item.id} item={item} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+        
+        <motion.div className={styles.total} layout>
+          <span>TOTAL</span>
 
-        <div className={styles.totalPrice}>
-          <Image src="/icon_price.png" alt="Cart" width={34} height={34} />
-          <span>{totalPrice.toFixed(2)} ETH</span>
-        </div>
-      </div>
+          <div className={styles.totalPrice}>
+            <Image src="/icon_price.png" alt="Cart" width={34} height={34} />
+            <span>{totalPrice.toFixed(2)} ETH</span>
+          </div>
+        </motion.div>
 
-      <Button
-        animation="fade"
-        onClick={handleCheckout}
-        disabled={isCheckingOut || cartItems.length === 0 || buttonText === 'COMPRA FINALIZADA!'}
-        className={styles.buttonBuy}
-      >
-        {isCheckingOut ? <Spinner /> : buttonText}
-      </Button>
+        <motion.div layout>
+          <Button
+            animation="fade"
+            onClick={handleCheckout}
+            disabled={isCheckingOut || cartItems.length === 0 || buttonText === 'COMPRA FINALIZADA!'}
+            className={styles.buttonBuy}
+          >
+            {isCheckingOut ? <Spinner /> : buttonText}
+          </Button>
+        </motion.div>
+      </LayoutGroup>
     </motion.div>
   );
 }
