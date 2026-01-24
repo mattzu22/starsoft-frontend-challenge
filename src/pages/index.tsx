@@ -1,6 +1,6 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import LoadMore from '@/components/ui/LoadMore';
+import Button from '@/components/ui/Button';
 import ListCardsNFT from '../components/home-nft/ListCardsNFT';
 
 import styles from '@/styles/Home.module.scss';
@@ -69,7 +69,7 @@ export default function Home({ initialData }: { initialData: initialDataProps })
       {data && <ListCardsNFT data={products} />}
 
       <div className={styles.containerLoadMore}>
-        <LoadMore
+        <Button
           animation="fade"
           isLoading={isFetchingNextPage}
           onClick={handleLoadMore}
@@ -81,7 +81,7 @@ export default function Home({ initialData }: { initialData: initialDataProps })
               hasNextPage ? 'Carregar mais' : 'Você já viu tudo'
             }
           </span>
-        </LoadMore>
+        </Button>
       </div>
 
       <Footer />

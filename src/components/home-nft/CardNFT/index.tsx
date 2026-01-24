@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './CardNFT.module.scss';
 
-import LoadMore from '@/components/ui/LoadMore';
+import Button from '@/components/ui/Button';
 import { NFTprops } from '@/hooks/useNFTs';
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/src/store/cart/cartSlice';
@@ -29,9 +29,9 @@ export default function CardNFT({ data }: { data: NFTprops }) {
           <Image src="/icon_price.png" alt="Cart" width={29} height={29} />
           <span>{data.price} ETH</span>
         </div>
-        <LoadMore animation="drop" textHover="Adicionar ao carrinho" onClick={handleAddToCart}>
+        <Button animation="drop" textHover="Adicionar ao carrinho" onClick={handleAddToCart}>
           Comprar
-        </LoadMore>
+        </Button>
       </div>
     </div>
   );
