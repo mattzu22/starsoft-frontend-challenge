@@ -5,12 +5,14 @@ import LoadMore from '@/components/ui/LoadMore';
 
 import { HeaderModal } from './Header';
 import { useSelector } from 'react-redux';
-import { selectCartItems } from '@/src/store/cart/selectors';
+import { selectCartItems, selectTotalPrice } from '@/src/store/cart/selectors';
 import CardNFTModal from './CardNFTModal';
 import { CartItem } from '@/src/types/storeCart';
 
 export default function ModalCart() {
   const cartItems = useSelector(selectCartItems);
+  const totalPrice = useSelector(selectTotalPrice);
+
 
   return (
     <div className={styles.containerModal}>
@@ -28,7 +30,7 @@ export default function ModalCart() {
 
         <div className={styles.totalPrice}>
           <Image src="/icon_price.png" alt="Cart" width={34} height={34} />
-          <span>12 ETH</span>
+          <span>{totalPrice.toFixed(2)} ETH</span>
         </div>
       </div>
 
