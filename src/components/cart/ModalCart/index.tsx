@@ -7,6 +7,7 @@ import { HeaderModal } from './Header';
 import { useSelector } from 'react-redux';
 import { selectCartItems } from '@/src/store/cart/selectors';
 import CardNFTModal from './CardNFTModal';
+import { CartItem } from '@/src/types/storeCart';
 
 export default function ModalCart() {
   const cartItems = useSelector(selectCartItems);
@@ -17,7 +18,7 @@ export default function ModalCart() {
 
       <div className={styles.containerCardNFT}>
          {cartItems.length === 0 && <h2>Carrinho vazio</h2>}
-        {cartItems.map(item => (
+        {cartItems.map((item: CartItem) => (
           <CardNFTModal key={item.id} item={item} />
         ))}
       </div>

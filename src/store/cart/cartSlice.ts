@@ -5,14 +5,21 @@ import { CartItem } from "@/src/types/storeCart";
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        cart: [] as CartItem[]
+        cart: [] as CartItem[],
+        isCartOpen: false
     },
     reducers: {
+        toggleCart: (state) => {
+            state.isCartOpen = !state.isCartOpen;
+        },
+        closeCart: (state) => {
+            state.isCartOpen = false;
+        },
+        openCart: (state) => {
+            state.isCartOpen = true;
+        },
         addItem: (state, action: PayloadAction<CartItem>) => {
             const existingItem = state.cart.find(item => item.id === action.payload.id);
-
-            console.log(action.payload);
-            
             
             if (existingItem) {
                 existingItem.quantity += 1;
@@ -40,7 +47,10 @@ export const {
     addItem,
     deleteItem,
     updateItem,
-    clearCart
+    clearCart,
+    toggleCart,
+    closeCart,
+    openCart
 } = cartSlice.actions
 
 export default cartSlice;

@@ -2,16 +2,15 @@ import Image from 'next/image';
 import styles from './Header.module.scss';
 import logo from '@/public/logo.png';
 import cart from '@/public/Bag.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectTotalItems } from '@/src/store/cart/selectors';
+import { toggleCart } from '@/src/store/cart/cartSlice';
 
-interface HeaderProps {
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+export default function Header() {
+  const dispatch = useDispatch();
 
-export default function Header({ setIsOpen}: HeaderProps) {
-  function openModal() {
-     setIsOpen(true)
+  function handleToggleCart() {
+     dispatch(toggleCart());
   }
 
   const totalItems = useSelector(selectTotalItems)
@@ -21,7 +20,7 @@ export default function Header({ setIsOpen}: HeaderProps) {
       <header>
         <Image src={logo} alt="Logo" />
         <div className={styles.cart}>
-          <button onClick={openModal}>
+          <button onClick={handleToggleCart}>
             <Image className={styles.cartIcon} src={cart} alt="Cart" />
           </button>
           <span>{totalItems}</span>

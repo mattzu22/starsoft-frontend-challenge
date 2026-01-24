@@ -9,7 +9,8 @@ import useNFTs, { NFTprops } from '../hooks/useNFTs';
 import { GetStaticProps } from 'next';
 import api from '../services/api';
 import ModalCart from '@/components/cart/ModalCart';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectIsCartOpen } from '../store/cart/selectors';
 
 export interface initialDataProps {
   initialData: NFTprops[]
@@ -29,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function Home({ initialData }: { initialData: initialDataProps }) {
-  const [isOpen, setIsOpen] = useState(false)
+  const isCartOpen = useSelector(selectIsCartOpen);
 
   const {
     data,
@@ -52,10 +53,6 @@ export default function Home({ initialData }: { initialData: initialDataProps })
     }
   }
 
-  function openModal(){
-    setIsOpen(true)
-  }
-
   return (
     <>
       <Head>
@@ -64,9 +61,9 @@ export default function Home({ initialData }: { initialData: initialDataProps })
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header setIsOpen={openModal} />
+      <Header />
 
-      {isOpen && <ModalCart />}
+      {isCartOpen && <ModalCart />}
 
       {isLoading && <div>Carregando...</div>}
       {data && <ListCardsNFT data={products} />}
