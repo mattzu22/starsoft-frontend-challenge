@@ -11,6 +11,7 @@ import api from '../services/api';
 import ModalCart from '@/components/cart/ModalCart';
 import { useSelector } from 'react-redux';
 import { selectIsCartOpen } from '../store/cart/selectors';
+import { AnimatePresence } from 'framer-motion'; // Added AnimatePresence
 
 export interface initialDataProps {
   initialData: NFTprops[]
@@ -63,7 +64,14 @@ export default function Home({ initialData }: { initialData: initialDataProps })
 
       <Header />
 
-      {isCartOpen && <ModalCart />}
+      <AnimatePresence>
+        {
+          isCartOpen &&
+          <div className={styles.containerModal}>
+            <ModalCart />
+          </div>
+        }
+      </AnimatePresence>
 
       {isLoading && <div>Carregando...</div>}
       {data && <ListCardsNFT data={products} />}

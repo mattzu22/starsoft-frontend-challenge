@@ -9,6 +9,8 @@ import { selectCartItems, selectTotalPrice, selectIsCartOpen } from '@/src/store
 import CardNFTModal from './CardNFTModal';
 import { CartItem } from '@/src/types/storeCart';
 import { clearCart, closeCart } from '@/src/store/cart/cartSlice';
+import { motion } from 'framer-motion';
+import { modalVariants } from '@/src/animations/variants';
 
 import cart from "@/public/Bag.png"
 
@@ -21,6 +23,16 @@ export default function ModalCart() {
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [buttonText, setButtonText] = useState('FINALIZAR COMPRA');
 
+  useEffect(() => {
+    if (isCartOpen) {
+      const timer = setTimeout(() => {
+        setIsCheckingOut(false);
+        setButtonText('FINALIZAR COMPRA');
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [isCartOpen]);
+
   const handleCheckout = () => {
     if (isCheckingOut || cartItems.length === 0) return;
 
@@ -30,7 +42,6 @@ export default function ModalCart() {
     setTimeout(() => {
       setIsCheckingOut(false);
       setButtonText('COMPRA FINALIZADA!');
-
       setTimeout(() => {
         dispatch(closeCart());
         dispatch(clearCart());
@@ -39,30 +50,22 @@ export default function ModalCart() {
     }, 1000);
   };
 
-  useEffect(() => {
-    if (isCartOpen) {
-      const timer = setTimeout(() => {
-        setIsCheckingOut(false);
-        setButtonText('FINALIZAR COMPRA');
-      }, 0); 
-      return () => clearTimeout(timer);
-    }
-  }, [isCartOpen]);
-
-
   return (
-    <div className={styles.containerModal}>
+    <motion.div
+      className={styles.cartModal}
+      variants={modalVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <HeaderModal />
 
       <div className={styles.containerCardNFT}>
-        {
-          cartItems.length === 0 && buttonText === 'FINALIZAR COMPRA' &&
+        {cartItems.length === 0 && buttonText === 'FINALIZAR COMPRA' &&
           <div className={styles.cartVoid}>
-            <h2>Carrinho vazio</h2>
-            <Image src={cart} alt="Cart" width={39} height={39} />
-          </div>
-        }
-
+            <h2>Carrinho vazio</h2>          
+            <Image src={cart} alt="Cart" width={35} height={35} />
+          </div>}
         {cartItems.map((item: CartItem) => (
           <CardNFTModal key={item.id} item={item} />
         ))}
@@ -85,6 +88,6 @@ export default function ModalCart() {
       >
         {isCheckingOut ? <Spinner /> : buttonText}
       </Button>
-    </div>
+    </motion.div>
   );
 }

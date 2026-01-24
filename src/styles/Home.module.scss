@@ -1,7 +1,11 @@
 @use '@/styles/mixins.scss';
 @use '@/styles/variables.scss';
 
-
+.containerModal {
+  max-width: 1310px;
+  margin: 0 auto;
+  position: relative;
+}
 
 /* SECTION */
 
@@ -37,5 +41,3 @@
     }
   }
 }
-
-

@@ -1,13 +1,13 @@
 @use '@/styles/mixins.scss';
 @use '@/styles/variables.scss';
 
-.containerModal {
+.cartModal {
   @include mixins.flex-column;
   @include mixins.main-wrapper(670px);
   @include mixins.panel-shadow;
   background-color: variables.$color-background-primary;
   position: absolute;
-  top: 80px;
+  top: -25px;
   right: 0;
   z-index: 10;
 }
@@ -46,8 +46,8 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: variables.$color-button-primary; 
-    border-radius: 4px; 
+    background-color: variables.$color-button-primary;
+    border-radius: 4px;
     border: 2px solid variables.$color-background-primary;
   }
 
@@ -67,8 +67,11 @@
     .imageNFT {
       @include mixins.center();
       @include mixins.size(161px);
-      border-radius: variables.$border-default;
-      background-color: variables.$background-image-nft;
+
+      img {
+        width: 100%;
+        border-radius: variables.$border-default;
+      }
     }
 
     .content {
