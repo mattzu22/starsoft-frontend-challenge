@@ -84,6 +84,10 @@
 
       p {
         @include mixins.font-style(12px, 300, variables.$font-color-secondary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
       }
 
       .price {
