@@ -14,6 +14,7 @@ export default function CardNFT({ data }: { data: NFTprops }) {
       id: data.id,
       name: data.name,
       image: data.image,
+      description: data.description,
       price: data.price,
       quantity: 1
     }))
