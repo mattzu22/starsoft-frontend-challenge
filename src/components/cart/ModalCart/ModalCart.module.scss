@@ -20,6 +20,11 @@
 
   button {
     @include mixins.circle-button(60px, variables.$color-button-secondary);
+    transition: 0.2s ease-out;
+
+    &:hover{
+      opacity: 0.7;
+    }
   }
 
   h2 {
@@ -161,4 +166,9 @@
   padding: 30px 0;
   max-width: 610px;
   background-color: variables.$color-button-primary;
+  transition:  ease-out 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }

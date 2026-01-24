@@ -73,9 +73,9 @@ export default function CardNFTModal({ item }: { item: CartItem }) {
             </motion.button>
           </div>
 
-          <button className={styles.buttonDelete} onClick={handleDeleteItem}>
+          <motion.button className={styles.buttonDelete} onClick={handleDeleteItem} whileHover={{ opacity: 0.7 }}>
             <Image src={iconDelete} alt="Delete" width={25} height={25} />
-          </button>
+          </motion.button>
         </div>
       </div>
     </motion.div>
