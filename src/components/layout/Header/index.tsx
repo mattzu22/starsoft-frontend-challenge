@@ -2,11 +2,11 @@ import Image from 'next/image';
 import styles from './Header.module.scss';
 import logo from '@/public/logo.png';
 import cart from '@/public/Bag.png';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTotalItems, selectIsCartOpen } from '@/src/store/cart/selectors';
 import { toggleCart } from '@/src/store/cart/cartSlice';
 import { AnimatePresence, motion } from 'framer-motion';
-
 import { cartIconVariants, totalItemsVariants } from "@/src/animations/variants"
 
 
