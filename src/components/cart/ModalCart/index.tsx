@@ -5,7 +5,7 @@ import Button from '@/components/ui/Button';
 import Spinner from '@/components/ui/Spinner';
 import { HeaderModal } from './Header';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectNFTpropss, selectTotalPrice, selectIsCartOpen } from '@/src/store/cart/selectors';
+import { selectNFTItems, selectTotalPrice, selectIsCartOpen } from '@/src/store/cart/selectors';
 import CardNFTModal from './CardNFTModal';
 import { NFTprops } from '@/types/nft';
 import { clearCart, closeCart } from '@/src/store/cart/cartSlice';
@@ -16,7 +16,7 @@ import cart from "@/public/Bag.png"
 
 export default function ModalCart() {
   const dispatch = useDispatch();
-  const NFTpropss = useSelector(selectNFTpropss);
+  const NFTpropss = useSelector(selectNFTItems);
   const totalPrice = useSelector(selectTotalPrice);
   const isCartOpen = useSelector(selectIsCartOpen);
 
