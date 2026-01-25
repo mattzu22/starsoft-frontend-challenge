@@ -20,13 +20,20 @@ export default function useNFTs({ rows, sortBy, orderBy, initialData }: ParamsPr
             pageParams: [1],
         },
         queryFn: async ({ pageParam = 1 }) => {
-            const response = await api.get(`?page=${pageParam}&rows=${rows}&sortBy=${sortBy}&orderBy=${orderBy}`)
+            try {
+                const response = await api.get(`?page=${pageParam}&rows=${rows}&sortBy=${sortBy}&orderBy=${orderBy}`)
 
-            if (response.status != 200) {
-                throw new Error('Não foi possível carregar os NFTs')
+                if (response.status !== 200) {
+                    throw new Error('Não foi possível carregar os NFTs')
+                }
+
+                return response.data
+            } catch (error) {
+                if (error instanceof Error) {
+                    throw new Error(`Erro ao carregar NFTs: ${error.message}`)
+                }
+                throw new Error('Erro desconhecido ao carregar NFTs')
             }
-
-            return response.data
         },
         getNextPageParam: (lastPage, allPages) => {
             const itemsLoaded = allPages.length * rows;
