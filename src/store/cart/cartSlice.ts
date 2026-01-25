@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { NFTprops } from "@/src/types/storeCart";
+import { NFTprops } from "@/src/types/nft";
 
 
 const cartSlice = createSlice({
