@@ -43,7 +43,7 @@ export default function CardNFT({ data }: { data: NFTprops }) {
         <p>{data.description}</p>
         <div className={styles.content}>
           <Image src="/icon_price.png" alt="Cart" width={29} height={29} />
-          <span>{data.price} ETH</span>
+          <span>{Number(data.price).toFixed(2)} ETH</span>
         </div>
         <Button animation="drop" textHover="Adicionar ao carrinho" onClick={handleAddToCart}>
           Comprar

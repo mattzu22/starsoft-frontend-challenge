@@ -42,7 +42,7 @@ export default function CardNFTModal({ item }: { item: NFTprops }) {
         <p>{item.description}</p>
         <div className={styles.price}>
           <Image src="/icon_price.png" alt="Cart" width={29} height={29} />
-          <span>{item.price} ETH</span>
+          <span>{Number(item.price).toFixed(2)} ETH</span>
         </div>
         <div className={styles.containerQuantity}>
           <div className={styles.quantity}>
