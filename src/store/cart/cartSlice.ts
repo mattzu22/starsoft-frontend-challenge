@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartItem } from "@/src/types/storeCart";
+import { NFTprops } from "@/src/types/storeCart";
 
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        cart: [] as CartItem[],
+        cart: [] as NFTprops[],
         isCartOpen: false
     },
     reducers: {
@@ -18,7 +18,7 @@ const cartSlice = createSlice({
         openCart: (state) => {
             state.isCartOpen = true;
         },
-        addItem: (state, action: PayloadAction<CartItem>) => {
+        addItem: (state, action: PayloadAction<NFTprops>) => {
             const existingItem = state.cart.find(item => item.id === action.payload.id);
             
             if (existingItem) {

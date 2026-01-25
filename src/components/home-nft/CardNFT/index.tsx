@@ -3,7 +3,7 @@ import styles from './CardNFT.module.scss';
 import { motion, Variants } from 'framer-motion'; // Import motion and Variants
 
 import Button from '@/components/ui/Button';
-import { NFTprops } from '@/hooks/useNFTs';
+import { NFTprops } from '@/types/nft';
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/src/store/cart/cartSlice';
 

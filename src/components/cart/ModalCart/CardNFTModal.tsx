@@ -2,14 +2,14 @@
 import Image from "next/image"
 import styles from "./ModalCart.module.scss"
 import iconDelete from "@/public/Delete.png"
-import { CartItem } from "@/src/types/storeCart"
+import { NFTprops  } from "@/types/nft"
 import { useDispatch } from "react-redux"
 import { addItem, decreaseItem, deleteItem } from "@/src/store/cart/cartSlice"
 import { AnimatePresence, motion } from "framer-motion"
 import { cardModalVariants } from "@/src/animations/variants"
 import { quantityVariants } from "@/src/animations/variants"
 
-export default function CardNFTModal({ item }: { item: CartItem }) {
+export default function CardNFTModal({ item }: { item: NFTprops }) {
   const dispatch = useDispatch();
 
   const handleDecreaseQuantity = () => {

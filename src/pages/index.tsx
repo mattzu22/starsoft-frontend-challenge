@@ -5,18 +5,15 @@ import ListCardsNFT from '../components/home-nft/ListCardsNFT';
 
 import styles from '@/styles/Home.module.scss';
 import Head from 'next/head';
-import useNFTs, { NFTprops } from '../hooks/useNFTs';
+import useNFTs from '../hooks/useNFTs';
+
 import { GetStaticProps } from 'next';
 import api from '../services/api';
 import ModalCart from '@/components/cart/ModalCart';
 import { useSelector } from 'react-redux';
 import { selectIsCartOpen } from '../store/cart/selectors';
-import { AnimatePresence } from 'framer-motion'; // Added AnimatePresence
-
-export interface initialDataProps {
-  initialData: NFTprops[]
-  count: number
-}
+import { AnimatePresence } from 'framer-motion';
+import { initialDataProps } from '../types/nft';
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await api.get('?page=1&rows=8&sortBy=name&orderBy=ASC');

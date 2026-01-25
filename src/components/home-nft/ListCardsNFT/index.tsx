@@ -1,4 +1,4 @@
-import { NFTprops } from "@/src/hooks/useNFTs";
+import { NFTprops } from "@/types/nft";
 import CardNFT from "../CardNFT";
 import styles from "./ListCardsNFT.module.scss"
 import { AnimatePresence, motion } from "framer-motion";

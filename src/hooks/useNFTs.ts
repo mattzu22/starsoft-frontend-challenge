@@ -1,17 +1,9 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import api from "../services/api";
-import { initialDataProps } from "../pages";
-
-export interface NFTprops {
-    id: string
-    name: string
-    image: string
-    price: number
-    description: string
-}
+import { initialDataProps } from "../types/nft";
 
 
-
+ 
 interface ParamsProps {
     rows: number
     sortBy: string
