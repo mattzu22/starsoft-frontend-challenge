@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { selectIsCartOpen } from '../store/cart/selectors';
 import { AnimatePresence } from 'framer-motion';
 import { initialDataProps } from '../types/nft';
+import { useState, useRef } from 'react';
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await api.get('?page=1&rows=8&sortBy=name&orderBy=ASC');
@@ -29,6 +30,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Home({ initialData }: { initialData: initialDataProps }) {
   const isCartOpen = useSelector(selectIsCartOpen);
+  const [loadingDuration, setLoadingDuration] = useState(0);
+  const startTime = useRef(0);
 
   const {
     data,
@@ -45,11 +48,18 @@ export default function Home({ initialData }: { initialData: initialDataProps })
     return <div>Error ao carregar os NFTs</div>
   }
 
-  function handleLoadMore() {
+  async function handleLoadMore() {
     if (hasNextPage && !isFetchingNextPage) {
-      fetchNextPage()
+      startTime.current = Date.now();
+
+      await fetchNextPage();
+
+      const duration = (Date.now() - startTime.current) / 1000;
+      console.log(duration);
+      
+      setLoadingDuration(duration);
     }
-  }
+  };
 
   return (
     <>
@@ -70,8 +80,7 @@ export default function Home({ initialData }: { initialData: initialDataProps })
         }
       </AnimatePresence>
 
-      {isLoading && <div>Carregando...</div>}
-      {data && <ListCardsNFT data={products} />}
+      <ListCardsNFT data={products} isLoading={isLoading || isFetchingNextPage} />
 
       <div className={styles.containerLoadMore}>
         <Button
@@ -79,6 +88,7 @@ export default function Home({ initialData }: { initialData: initialDataProps })
           isLoading={isFetchingNextPage}
           onClick={handleLoadMore}
           className={styles.loadMore}
+          loadingDuration={loadingDuration}
           disabled={!hasNextPage || isFetchingNextPage}
         >
           <span>

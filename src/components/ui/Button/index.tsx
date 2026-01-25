@@ -10,6 +10,7 @@ interface ButtonProps {
   disabled?: boolean;
   className?: string;
   textHover?: string;
+  loadingDuration?: number;
 }
 
 export default function Button({
@@ -20,6 +21,7 @@ export default function Button({
   disabled = false,
   className = '',
   textHover,
+  loadingDuration = 2,
 }: ButtonProps) {
   const buttonClasses = [
     styles.button,
@@ -32,7 +34,7 @@ export default function Button({
     <div className={styles.buttonContainer}>
       {isLoading && (
         <div className={styles.loadingBarContainer}>
-          <div className={styles.loadingBar}></div>
+          <div className={styles.loadingBar} style={{ animationDuration: `${loadingDuration}s` }}></div>
         </div>
       )}
       <button
