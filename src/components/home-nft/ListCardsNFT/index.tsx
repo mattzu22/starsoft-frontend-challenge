@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export default function ListCardsNFT({ data }: { data: NFTprops[] }) {
     return (
-        <motion.div className={styles.containerNFT} layout> {/* Changed to motion.div and added layout */}
+        <motion.div className={styles.containerNFT} layout>
             <AnimatePresence>
                 {
                     data?.map(nft => (
