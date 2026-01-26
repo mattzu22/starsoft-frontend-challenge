@@ -1,17 +1,13 @@
 import Image from 'next/image';
 import styles from './CardNFT.module.scss';
-import { motion, Variants } from 'framer-motion'; // Import motion and Variants
+import { motion } from 'framer-motion'; // Import motion and Variants
 
 import Button from '@/components/ui/Button';
 import { NFTprops } from '@/types/nft';
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/src/store/cart/cartSlice';
 
-const cardEntryVariants: Variants = {
-  initial: { opacity: 0, y: 50, scale: 0.9 },
-  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
-  exit: { opacity: 0, y: -50, scale: 0.9 }
-};
+import { cardEntryVariants } from '@/src/animations/variants';
 
 export default function CardNFT({ data }: { data: NFTprops }) {
   const dispatch = useDispatch();
