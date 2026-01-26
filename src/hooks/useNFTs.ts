@@ -4,14 +4,14 @@ import { initialDataProps } from "../types/nft";
 
 
  
-interface ParamsProps {
+interface useNFTsProps {
     rows: number
     sortBy: string
     orderBy: string
     initialData: initialDataProps
 }
 
-export default function useNFTs({ rows, sortBy, orderBy, initialData }: ParamsProps) {
+export default function useNFTs({ rows, sortBy, orderBy, initialData }: useNFTsProps) {
     return useInfiniteQuery({
         queryKey: ['nfts', sortBy, orderBy],
         initialPageParam: 1,
