@@ -1,7 +1,6 @@
 import { NFTprops, initialDataProps } from '@/types/nft'
 import { RootState } from '@/store/index'
 
-// NFT Mock Data
 export const mockNFT: NFTprops = {
   id: '1',
   name: 'Test NFT',
@@ -38,13 +37,11 @@ export const mockNFT4: NFTprops = {
   quantity: 1,
 }
 
-// Initial Data Mock for useNFTs
 export const mockInitialData: initialDataProps = {
   initialData: [mockNFT, mockNFT2, mockNFT3, mockNFT4],
   count: 12,
 }
 
-// Cart State Mock
 export const createMockRootState = (
   cartState: { cart: NFTprops[]; isCartOpen: boolean }
 ): RootState => ({
@@ -54,7 +51,6 @@ export const createMockRootState = (
   },
 })
 
-// Default Cart State
 export const mockDefaultCartState = {
   cart: [],
   isCartOpen: false,

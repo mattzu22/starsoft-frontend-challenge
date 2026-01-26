@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react'
 import useNFTs from '@/hooks/useNFTs'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactNode } from 'react'
-import { mockInitialData } from './mocks/index'
+import { mockInitialData } from './mocks'
 
 const createWrapper = () => {
   const queryClient = new QueryClient({
