@@ -12,11 +12,11 @@ import { clearCart, closeCart } from '@/src/store/cart/cartSlice';
 import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
 import { modalVariants } from '@/src/animations/variants';
 
-import cart from "@/public/Bag.png"
+import cart from "@/public/icons/Bag.png"
 
 export default function ModalCart() {
   const dispatch = useDispatch();
-  const NFTpropss = useSelector(selectNFTItems);
+  const NFTItems = useSelector(selectNFTItems);
   const totalPrice = useSelector(selectTotalPrice);
   const isCartOpen = useSelector(selectIsCartOpen);
 
@@ -34,7 +34,7 @@ export default function ModalCart() {
   }, [isCartOpen]);
 
   const handleCheckout = () => {
-    if (isCheckingOut || NFTpropss.length === 0) return;
+    if (isCheckingOut || NFTItems.length === 0) return;
 
     setIsCheckingOut(true);
     setButtonText('PROCESSANDO...');
@@ -63,7 +63,7 @@ export default function ModalCart() {
 
         <motion.div className={styles.containerCardNFT} layout>
           <AnimatePresence mode="popLayout">
-            {NFTpropss.length === 0 && buttonText === 'FINALIZAR COMPRA' && (
+            {NFTItems.length === 0 && buttonText === 'FINALIZAR COMPRA' && (
 
               <motion.div
                 key="empty-cart"
@@ -77,7 +77,7 @@ export default function ModalCart() {
                 <Image src={cart} alt="Cart" width={35} height={35} />
               </motion.div>
             )}
-            {NFTpropss.map((item: NFTprops) => (
+            {NFTItems.map((item: NFTprops) => (
               <CardNFTModal key={item.id} item={item} />
             ))}
           </AnimatePresence>
@@ -96,7 +96,7 @@ export default function ModalCart() {
           <Button
             animation="fade"
             onClick={handleCheckout}
-            disabled={isCheckingOut || NFTpropss.length === 0 || buttonText === 'COMPRA FINALIZADA!'}
+            disabled={isCheckingOut || NFTItems.length === 0 || buttonText === 'COMPRA FINALIZADA!'}
             className={styles.buttonBuy}
           >
             {isCheckingOut ? <Spinner /> : buttonText}
