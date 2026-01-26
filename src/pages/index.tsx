@@ -35,7 +35,6 @@ export default function Home({ initialData }: { initialData: initialDataProps })
 
   const {
     data,
-    isLoading,
     isError,
     fetchNextPage,
     hasNextPage,
@@ -55,8 +54,6 @@ export default function Home({ initialData }: { initialData: initialDataProps })
       await fetchNextPage();
 
       const duration = (Date.now() - startTime.current) / 1000;
-      console.log(duration);
-      
       setLoadingDuration(duration);
     }
   };
@@ -80,7 +77,7 @@ export default function Home({ initialData }: { initialData: initialDataProps })
         }
       </AnimatePresence>
 
-      <ListCardsNFT data={products} isLoading={isLoading || isFetchingNextPage} />
+      <ListCardsNFT data={products} isError={isError} />
 
       <div className={styles.containerLoadMore}>
         <Button
