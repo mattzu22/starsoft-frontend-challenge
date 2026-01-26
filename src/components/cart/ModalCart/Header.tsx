@@ -13,7 +13,7 @@ export function HeaderModal() {
 
     return (
         <header className={styles.header}>
-            <button onClick={handleCloseCart}>
+            <button onClick={handleCloseCart} aria-label="Fechar">
                 <Image src={arrow} alt="Cart" width={33} height={33} />
             </button>
 

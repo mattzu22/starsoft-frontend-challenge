@@ -11,6 +11,7 @@ interface ButtonProps {
   className?: string;
   textHover?: string;
   loadingDuration?: number;
+  ariaLabel?: string;
 }
 
 export default function Button({
@@ -22,6 +23,7 @@ export default function Button({
   className = '',
   textHover,
   loadingDuration = 2,
+  ariaLabel = 'Carregar mais produtos',
 }: ButtonProps) {
   const buttonClasses = [
     styles.button,
@@ -41,7 +43,7 @@ export default function Button({
         className={buttonClasses}
         onClick={onClick}
         disabled={disabled || isLoading}
-        aria-label='Carregar mais produtos'
+        aria-label={ariaLabel}
       >
         {animation === 'drop' && textHover ? (
           <>
