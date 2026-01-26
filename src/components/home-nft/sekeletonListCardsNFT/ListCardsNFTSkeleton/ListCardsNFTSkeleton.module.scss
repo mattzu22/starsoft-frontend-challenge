@@ -1,0 +1,9 @@
+@use '@/styles/mixins.scss';
+
+.container {
+  @include mixins.center;
+  @include mixins.main-wrapper(1490px);
+  flex-wrap: wrap;
+  margin-top: 25px;
+  gap: 25px;
+}
