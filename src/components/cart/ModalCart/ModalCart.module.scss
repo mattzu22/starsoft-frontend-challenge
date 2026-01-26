@@ -18,17 +18,31 @@
   gap: 84px;
   margin-bottom: 130px;
 
+  @include mixins.responsive('sm') {
+    padding: 30px 20px 0 20px;
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+
   button {
     @include mixins.circle-button(60px, variables.$color-button-secondary);
     transition: 0.2s ease-out;
 
-    &:hover{
+    @include mixins.responsive('sms') {
+      @include mixins.size(50px);
+    }
+
+    &:hover {
       opacity: 0.7;
     }
   }
 
   h2 {
     @include mixins.font-style(24px, 500);
+
+    @include mixins.responsive('sms') {
+      font-size: 20px;
+    }
   }
 }
 
@@ -70,18 +84,44 @@
     border-radius: variables.$border-default;
     background-color: variables.$background-card-secondary;
 
+    @include mixins.responsive('sms') {
+      flex-direction: column;
+      @include mixins.align-items();
+    }
+
     .imageNFT {
       @include mixins.center();
       @include mixins.size(161px);
 
+      @include mixins.responsive('mds') {
+        @include mixins.size(140px);
+      }
+
+      @include mixins.responsive('mds') {
+        @include mixins.size(161px);
+      }
+
       img {
         width: 100%;
+        object-fit: cover;
         border-radius: variables.$border-default;
       }
     }
 
     .content {
       width: 70%;
+
+      @include mixins.responsive('mds') {
+        width: 65%;
+      }
+
+      @include mixins.responsive('sm') {
+        width: 55%;
+      }
+
+      @include mixins.responsive('sms') {
+        width: 100%;
+      }
 
       h2 {
         @include mixins.font-style(18px, 500);
@@ -109,11 +149,10 @@
         @include mixins.space-between();
         @include mixins.align-items();
         gap: 10px;
-        margin-top: 12px;
+        margin-top: 20px;
 
         .quantity {
           @include mixins.align-items();
-          margin-top: 16px;
 
           .subtract {
             @include mixins.size(38px, 43px);
@@ -148,6 +187,10 @@
 
   span {
     @include mixins.font-style(24px, 700);
+
+    @include mixins.responsive('sm') {
+      font-size: 20px;
+    }
   }
 
   .totalPrice {
@@ -156,6 +199,9 @@
 
     span {
       @include mixins.font-style(24px, 600);
+      @include mixins.responsive('sm') {
+        font-size: 20px;
+      }
     }
   }
 }
@@ -166,7 +212,12 @@
   padding: 30px 0;
   max-width: 610px;
   background-color: variables.$color-button-primary;
-  transition:  ease-out 0.2s;
+  transition: ease-out 0.2s;
+
+  @include mixins.responsive('sm') {
+    padding: 25px 0;
+    font-size: 16px;
+  }
 
   &:hover {
     opacity: 0.7;
