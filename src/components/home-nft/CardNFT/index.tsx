@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import styles from './CardNFT.module.scss';
-import { motion } from 'framer-motion'; // Import motion and Variants
+import { AnimatePresence, motion } from 'framer-motion';
+import { descriptionVariants } from '@/src/animations/variants';
+import { useState } from 'react';
 
 import Button from '@/components/ui/Button';
 import { NFTprops } from '@/types/nft';
@@ -10,9 +12,10 @@ import { addItem } from '@/src/store/cart/cartSlice';
 import { cardEntryVariants } from '@/src/animations/variants';
 
 export default function CardNFT({ data }: { data: NFTprops }) {
+  const [isHovered, setIsHovered] = useState(false);
   const dispatch = useDispatch();
 
-    function handleAddToCart() {
+  function handleAddToCart() {
     dispatch(addItem({
       id: data.id,
       name: data.name,
@@ -29,14 +32,29 @@ export default function CardNFT({ data }: { data: NFTprops }) {
       initial="initial"
       animate="animate"
       exit="exit"
-      layout
       key={data.id}
     >
       <Image className={styles.imageNFT} src={data.image} alt={data.name} width={216} height={195} />
 
       <div className={styles.containerContent}>
         <h2>{data.name}</h2>
-        <p>{data.description}</p>
+        <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className={styles.descriptionContainer}
+        >
+          <p>{data.description}</p>
+          <AnimatePresence>
+            {isHovered && (
+              <motion.div
+                variants={descriptionVariants}
+                className={styles.descriptionHover}
+              >
+                {data.description}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
         <div className={styles.content}>
           <Image src="/icon_price.png" alt="Cart" width={29} height={29} />
           <span>{Number(data.price).toFixed(2)} ETH</span>
