@@ -1,11 +1,12 @@
 import { Provider } from "react-redux";
 import { persistorCart, store } from ".";
 import { PersistGate } from "redux-persist/integration/react";
+import { ReactNode } from "react";
 
-export default function StoreProvider({ children }: { children: React.ReactNode }) {
+export default function StoreProvider({ children }: { children: ReactNode }) {
     return (
         <Provider store={store}>
-            <PersistGate loading={null} persistor={persistorCart} >
+            <PersistGate loading={null} persistor={persistorCart}>
                 {children}
             </PersistGate>
         </Provider>

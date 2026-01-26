@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { configureStore } from "@reduxjs/toolkit";
 import cartSlice from "./cart/cartSlice";
 
-import storage from "redux-persist/lib/storage";
 import {
     persistStore, persistReducer, FLUSH,
     REHYDRATE,
@@ -10,6 +11,24 @@ import {
     PURGE,
     REGISTER,
 } from "redux-persist";
+import { Storage } from "redux-persist";
+import createWebStorage from "redux-persist/lib/storage/createWebStorage";
+
+const createNoopStorage = (): Storage => {
+    return {
+        getItem: (_key: string) => {
+            return Promise.resolve(null);
+        },
+        setItem: (_key: string, value: any) => {
+            return Promise.resolve(value);
+        },
+        removeItem: (_key: string) => {
+            return Promise.resolve();
+        },
+    };
+};
+
+const storage = typeof window !== "undefined" ? createWebStorage("local") : createNoopStorage();
 
 const persistConfig = {
     key: "cart",
