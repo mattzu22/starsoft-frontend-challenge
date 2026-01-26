@@ -13,6 +13,7 @@ import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
 import { modalVariants } from '@/src/animations/variants';
 
 import cart from "@/public/icons/Bag.png"
+import price from "@/public/icons/icon_price.png"
 
 export default function ModalCart() {
   const dispatch = useDispatch();
@@ -87,7 +88,7 @@ export default function ModalCart() {
           <span>TOTAL</span>
 
           <div className={styles.totalPrice}>
-            <Image src="/icon_price.png" alt="Cart" width={34} height={34} />
+            <Image src={price} alt="Cart" width={34} height={34} />
             <span>{totalPrice.toFixed(2)} ETH</span>
           </div>
         </motion.div>

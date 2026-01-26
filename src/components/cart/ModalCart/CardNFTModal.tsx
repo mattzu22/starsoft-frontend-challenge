@@ -9,6 +9,8 @@ import { AnimatePresence, motion } from "framer-motion"
 import { cardModalVariants } from "@/src/animations/variants"
 import { quantityVariants } from "@/src/animations/variants"
 
+import price from "@/public/icons/icon_price.png"
+
 export default function CardNFTModal({ item }: { item: NFTprops }) {
   const dispatch = useDispatch();
 
@@ -41,7 +43,7 @@ export default function CardNFTModal({ item }: { item: NFTprops }) {
         <h2>{item.name}</h2>
         <p>{item.description}</p>
         <div className={styles.price}>
-          <Image src="/icon_price.png" alt="Cart" width={29} height={29} />
+          <Image src={price} alt="Cart" width={29} height={29} />
           <span>{Number(item.price).toFixed(2)} ETH</span>
         </div>
         <div className={styles.containerQuantity}>

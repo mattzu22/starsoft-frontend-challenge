@@ -11,6 +11,8 @@ import { addItem } from '@/src/store/cart/cartSlice';
 
 import { cardEntryVariants } from '@/src/animations/variants';
 
+import price from "@/public/icons/icon_price.png"
+
 export default function CardNFT({ data }: { data: NFTprops }) {
   const [isHovered, setIsHovered] = useState(false);
   const dispatch = useDispatch();
@@ -56,7 +58,7 @@ export default function CardNFT({ data }: { data: NFTprops }) {
           </AnimatePresence>
         </div>
         <div className={styles.content}>
-          <Image src="/icon_price.png" alt="Cart" width={29} height={29} />
+          <Image src={price} alt="Cart" width={29} height={29} />
           <span>{Number(data.price).toFixed(2)} ETH</span>
         </div>
         <Button animation="drop" textHover="Adicionar ao carrinho" onClick={handleAddToCart}>
