@@ -1,5 +1,5 @@
 import { selectIsCartOpen, selectNFTItems, selectTotalPrice, selectTotalItems } from '@/store/cart/selectors'
-import { mockNFT, mockNFT2, createMockRootState } from './mocks/index'
+import { mockNFT, mockNFT2, createMockRootState } from '../mocks'
 
 describe('selectorsCart', () => {
   it('should select the items in the cart', () => {

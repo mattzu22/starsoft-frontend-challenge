@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux'
 import CardNFT from '@/components/home-nft/CardNFT'
-import { mockNFT } from './mocks'
+import { mockNFT } from '../mocks'
 import { configureStore } from '@reduxjs/toolkit'
 import cartSlice from '@/store/cart/cartSlice'
 

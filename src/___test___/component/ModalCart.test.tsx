@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import ModalCart from '@/components/cart/ModalCart'
 import { configureStore } from '@reduxjs/toolkit'
 import cartSlice, { addItem, openCart } from '@/store/cart/cartSlice'
-import { mockNFT, mockNFT2 } from './mocks'
+import { mockNFT, mockNFT2 } from '../mocks'
 
 const createMockStore = () => {
   return configureStore({

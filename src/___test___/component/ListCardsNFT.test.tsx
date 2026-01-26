@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import ListCardsNFT from '@/components/home-nft/ListCardsNFT'
-import { mockNFT, mockNFT2, mockNFT3 } from './mocks'
+import { mockNFT, mockNFT2, mockNFT3 } from '../mocks'
 import { configureStore } from '@reduxjs/toolkit'
 import cartSlice from '@/store/cart/cartSlice'
 

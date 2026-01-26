@@ -7,7 +7,7 @@ import cartSlice, {
   closeCart,
   openCart,
 } from '@/store/cart/cartSlice'
-import { mockNFT, mockNFT2 } from './mocks/index'
+import { mockNFT, mockNFT2 } from '../mocks'
 import type { NFTprops } from '@/types/nft'
 
 interface CartState {
