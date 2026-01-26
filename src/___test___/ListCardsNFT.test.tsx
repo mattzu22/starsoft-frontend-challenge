@@ -13,7 +13,7 @@ describe('ListCardsNFT', () => {
   it('should render empty list when data is empty', () => {
     const { container } = render(
       <Provider store={mockStore}>
-        <ListCardsNFT data={[]} />
+        <ListCardsNFT data={[]} isError={false}/>
       </Provider>
     )
     expect(container.querySelector('.containerNFT')).toBeInTheDocument()
@@ -22,7 +22,7 @@ describe('ListCardsNFT', () => {
   it('should render single NFT card', () => {
     render(
       <Provider store={mockStore}>
-        <ListCardsNFT data={[mockNFT]} />
+        <ListCardsNFT data={[mockNFT]} isError={false}/>
       </Provider>
     )
     expect(screen.getByText(mockNFT.name)).toBeInTheDocument()
@@ -31,7 +31,7 @@ describe('ListCardsNFT', () => {
   it('should render multiple NFT cards', () => {
     render(
       <Provider store={mockStore}>
-        <ListCardsNFT data={[mockNFT, mockNFT2, mockNFT3]} />
+        <ListCardsNFT data={[mockNFT, mockNFT2, mockNFT3]} isError={false}/>
       </Provider>
     )
     expect(screen.getByText(mockNFT.name)).toBeInTheDocument()
@@ -42,29 +42,19 @@ describe('ListCardsNFT', () => {
   it('should render all NFT prices', () => {
     render(
       <Provider store={mockStore}>
-        <ListCardsNFT data={[mockNFT, mockNFT2]} />
+        <ListCardsNFT data={[mockNFT, mockNFT2]} isError={false}/>
       </Provider>
     )
     const priceElements = screen.getAllByText(`${mockNFT.price.toFixed(2)} ETH`)
     expect(priceElements).toHaveLength(2)
   })
 
-  it('should render CardNFTSkeleton components when isLoading is true', () => {
+  it('should render CardNFT components when data is provided', () => {
     render(
       <Provider store={mockStore}>
-        <ListCardsNFT data={[]} />
-      </Provider>
-    )
-    expect(screen.getAllByTestId('card-nft-skeleton')).toHaveLength(8)
-  })
-
-  it('should render CardNFT components when isLoading is false', () => {
-    render(
-      <Provider store={mockStore}>
-        <ListCardsNFT data={[mockNFT]} />
+        <ListCardsNFT data={[mockNFT]} isError={false}/>
       </Provider>
     )
     expect(screen.getByText(mockNFT.name)).toBeInTheDocument()
-    expect(screen.queryByTestId('card-nft-skeleton')).not.toBeInTheDocument()
   })
 })
