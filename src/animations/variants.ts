@@ -59,3 +59,9 @@ export const totalItemsVariants: Variants = {
   },
   exit: { opacity: 0, scale: 0.8, y: 5, transition: { duration: 0.2, ease: "easeIn" } }
 };
+
+export const cardEntryVariants: Variants = {
+  initial: { opacity: 0, y: 50, scale: 0.9 },
+  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  exit: { opacity: 0, y: -50, scale: 0.9 }
+};
