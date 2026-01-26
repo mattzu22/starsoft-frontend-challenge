@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion';
+import { motion, Transition } from 'framer-motion';
 import styles from './Spinner.module.scss';
 
-const spinTransition = {
-  loop: Infinity,
+const spinTransition: Transition = {
+  repeat: Infinity,
   ease: 'linear',
   duration: 1,
 };
