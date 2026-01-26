@@ -25,11 +25,11 @@ export const modalVariants: Variants = {
 };
 
 export const cardModalVariants: Variants = {
-  initial: { opacity: 0, scale: 0, transformOrigin: "center center" }, 
+  initial: { opacity: 0, scale: 0, transformOrigin: "center center" },
   visible: { opacity: 1, scale: 1, rotate: 0, x: 0, transition: { duration: 0.2, ease: "easeOut" } },
   exit: {
     opacity: 0,
-    scale: 0, 
+    scale: 0,
     transformOrigin: "center center",
     transition: { duration: 0.4, ease: "easeOut" }
   }
@@ -38,7 +38,7 @@ export const cardModalVariants: Variants = {
 export const quantityVariants: Variants = {
   initial: { opacity: 0, scale: 0.5, y: -5 },
   animate: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 500, damping: 30 } },
-  exit: { opacity: 0, scale: 0.5, y: 5 } 
+  exit: { opacity: 0, scale: 0.5, y: 5 }
 };
 
 export const cartIconVariants: Variants = {
@@ -64,4 +64,21 @@ export const cardEntryVariants: Variants = {
   initial: { opacity: 0, y: 50, scale: 0.9 },
   animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
   exit: { opacity: 0, y: -50, scale: 0.9 }
+};
+
+export const descriptionVariants: Variants = {
+  initial: { opacity: 0, y: -10 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+  exit: { opacity: 0, y: -10 },
+};
+
+export const shimmerAnimationVariants: Variants = {
+  shimmer: {
+    backgroundColor: ['#494949', '#5c5c5c', '#494949'],
+    transition: {
+      duration: 1.5,
+      repeat: Infinity,
+      repeatType: 'loop',
+    },
+  },
 };
