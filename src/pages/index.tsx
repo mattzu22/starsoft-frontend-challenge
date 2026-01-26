@@ -1,7 +1,8 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Button from '@/components/ui/Button';
-import ListCardsNFT from '../components/home-nft/ListCardsNFT';
+import ListCardsNFT from '@/components/home-nft/ListCardsNFT';
+import ListCardsNFTSkeleton from '@/components/home-nft/sekeletonListCardsNFT/ListCardsNFTSkeleton';
 
 import styles from '@/styles/Home.module.scss';
 import Head from 'next/head';
@@ -14,7 +15,8 @@ import { useSelector } from 'react-redux';
 import { selectIsCartOpen } from '../store/cart/selectors';
 import { AnimatePresence } from 'framer-motion';
 import { initialDataProps } from '../types/nft';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
+import delayDuration from '../utils/delayDuration';
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await api.get('?page=1&rows=8&sortBy=name&orderBy=ASC');
@@ -31,7 +33,6 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home({ initialData }: { initialData: initialDataProps }) {
   const isCartOpen = useSelector(selectIsCartOpen);
   const [loadingDuration, setLoadingDuration] = useState(0);
-  const startTime = useRef(0);
 
   const {
     data,
@@ -43,17 +44,10 @@ export default function Home({ initialData }: { initialData: initialDataProps })
 
   const products = data?.pages.flatMap(page => page.products);
 
-  if (isError) {
-    return <div>Error ao carregar os NFTs</div>
-  }
-
   async function handleLoadMore() {
     if (hasNextPage && !isFetchingNextPage) {
-      startTime.current = Date.now();
+      const { duration } = await delayDuration(() => fetchNextPage());
 
-      await fetchNextPage();
-
-      const duration = (Date.now() - startTime.current) / 1000;
       setLoadingDuration(duration);
     }
   };
@@ -78,6 +72,7 @@ export default function Home({ initialData }: { initialData: initialDataProps })
       </AnimatePresence>
 
       <ListCardsNFT data={products} isError={isError} />
+      {isFetchingNextPage && <ListCardsNFTSkeleton />}
 
       <div className={styles.containerLoadMore}>
         <Button
