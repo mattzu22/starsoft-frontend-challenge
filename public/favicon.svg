@@ -1,0 +1,37 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <rect width="32" height="32" rx="6" fill="#2a2a3e"/>
+  
+  <!-- NFT hexagon frame -->
+  <path d="M 16 5 L 24 9 L 24 15 L 16 19 L 8 15 L 8 9 Z" 
+        stroke="#FF9A56" 
+        stroke-width="1.5" 
+        fill="none"
+        opacity="0.4"/>
+  
+  <!-- Letter "S" - Centralizado -->
+  <text x="16" y="17" 
+        font-family="Arial, sans-serif" 
+        font-size="18" 
+        font-weight="bold" 
+        fill="#FF9A56" 
+        text-anchor="middle"
+        dominant-baseline="middle">S</text>
+  
+  <!-- Ethereum symbol (small) -->
+  <g transform="translate(16, 25) scale(0.4)">
+    <path d="M 0 -6 L -3 0 L 0 2 L 3 0 Z" fill="#627eea"/>
+    <path d="M 0 -6 L 3 0 L 0 -3 L -3 0 Z" fill="#8ca4f5" opacity="0.6"/>
+    <path d="M 0 2 L -3 0 L 0 4 L 3 0 Z" fill="#627eea" opacity="0.8"/>
+  </g>
+  
+  <!-- Blockchain dots -->
+  <circle cx="6" cy="6" r="1" fill="#FFB380" opacity="0.6"/>
+  <circle cx="26" cy="6" r="1" fill="#FFB380" opacity="0.6"/>
+  <circle cx="6" cy="26" r="1" fill="#FF6B35" opacity="0.6"/>
+  <circle cx="26" cy="26" r="1" fill="#FF6B35" opacity="0.6"/>
+  
+  <!-- Connecting lines (blockchain style) -->
+  <line x1="6" y1="6" x2="26" y2="6" stroke="#FF9A56" stroke-width="0.5" opacity="0.3"/>
+  <line x1="6" y1="26" x2="26" y2="26" stroke="#FF9A56" stroke-width="0.5" opacity="0.3"/>
+</svg>
