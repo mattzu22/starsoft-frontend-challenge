@@ -1,7 +1,4 @@
-
-import '@/styles/globals.scss';
 import { Html, Head, Main, NextScript } from "next/document";
-
 
 export default function Document() {
   return (
@@ -11,7 +8,7 @@ export default function Document() {
 
         <meta name="description" content="Marketplace de NFTs" />
         <meta name="keywords" content="NFT, marketplace, blockchain, arte digital, colecionáveis" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
