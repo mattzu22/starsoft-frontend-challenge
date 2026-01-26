@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './Header.module.scss';
-import logo from '@/public/logo.png';
-import cart from '@/public/Bag.png';
+import logo from '@/public/icons/logo.png';
+import cart from '@/public/icons/Bag.png';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTotalItems, selectIsCartOpen } from '@/src/store/cart/selectors';

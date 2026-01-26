@@ -1,6 +1,6 @@
 import Image from "next/image"
 import styles from "./ModalCart.module.scss"
-import arrow from "@/public/Arrow - Left.png"
+import arrow from "@/public/icons/Arrow - Left.png"
 import { useDispatch } from "react-redux"
 import { closeCart } from "@/src/store/cart/cartSlice"
 

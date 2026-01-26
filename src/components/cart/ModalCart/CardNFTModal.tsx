@@ -1,7 +1,7 @@
 
 import Image from "next/image"
 import styles from "./ModalCart.module.scss"
-import iconDelete from "@/public/Delete.png"
+import iconDelete from "@/public/icons/Delete.png"
 import { NFTprops  } from "@/types/nft"
 import { useDispatch } from "react-redux"
 import { addItem, decreaseItem, deleteItem } from "@/src/store/cart/cartSlice"
